@@ -27,13 +27,17 @@ def on_message(client, userdata, msg):
         nsecs = message['header']['stamp']['nsecs']
         seq = message['header']['seq']
 
-        sent_time = float(str(secs) + '.' + str(nsecs))
-        ros_current_time = rospy.get_rostime()
-        current_time = float(str(ros_current_time.secs) + '.' + str(ros_current_time.nsecs))
-        print(current_time>sent_time)
-        latency = current_time - sent_time
+        # sent_time = float(str(secs) + '.' + str(nsecs))
+        sent_time = rospy.Time(secs,nsecs)
+        # current_time = time.time()
+        current_time = rospy.get_rostime()
+        # current_time = float(str(ros_current_time.secs) + '.' + str(ros_current_time.nsecs))
+        # print (rospy.Time(secs,nsecs))
+        # print (rospy.get_rostime())
+        latency = (current_time - sent_time).to_sec()
 
         print(latency)
+        # print ((rospy.get_rostime()-rospy.Time(secs,nsecs)).to_sec())
         packet = {'seq':seq,'latency':latency}
         packets.append(packet)
     except:
@@ -46,7 +50,7 @@ client.on_connect = on_connect
 client.on_message = on_message
 client.on_disconnect = on_disconnect
 
-client.connect("192.168.1.3", 1883, 60)
+client.connect("192.168.1.2", 1883, 60)
 client.loop_start()
 
 count1 = 0

@@ -7,7 +7,7 @@ from sensor_msgs.msg import PointField
 def talker():
     pub = rospy.Publisher('chatter', PointCloud2, queue_size=10)
     rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(10) # 10hz - go through the loop 10 times in a second 
+    rate = rospy.Rate(100000) # 10hz - go through the loop 10 times in a second 
     
     # PointCloud2
     msg_to_publish = PointCloud2()

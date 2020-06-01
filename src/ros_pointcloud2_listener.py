@@ -13,17 +13,18 @@ def callback(data):
     global path
     global packets
 
-    rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data)
+    # rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data)
 
-    sent_time = float(str(data.header.stamp.secs) + '.' + str(data.header.stamp.nsecs))
-    ros_current_time = rospy.get_rostime()
-    current_time = float(str(ros_current_time.secs) + '.' + str(ros_current_time.nsecs))
-    latency = current_time - sent_time
-    
+    secs = data.header.stamp.secs
+    nsecs = data.header.stamp.nsecs
+
+    sent_time = rospy.Time(secs,nsecs)
+    current_time = rospy.get_rostime()
+    latency = (current_time - sent_time).to_sec()
+
     packet = {'seq':data.header.seq,'latency':latency}
-
     packets.append(packet)
-
+    print (latency)
     # output_logf = open(path, 'a')
     # now = rospy.get_rostime()
     # s = ""

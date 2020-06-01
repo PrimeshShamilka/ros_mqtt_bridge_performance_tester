@@ -6,7 +6,7 @@ from bridge_performance_tester.msg import custom_msg
 def talker():
     pub = rospy.Publisher('chatter', custom_msg, queue_size=10)
     rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(1000000) # 10hz - go through the loop 10 times in a second 
+    rate = rospy.Rate(100000) # 10hz - go through the loop 10 times in a second 
     msg_to_publish = custom_msg()
     counter = 1
 

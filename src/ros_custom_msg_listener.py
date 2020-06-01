@@ -15,13 +15,14 @@ def callback(data):
 
     rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data.name)
 
-    sent_time = float(str(data.header.stamp.secs) + '.' + str(data.header.stamp.nsecs))
-    ros_current_time = rospy.get_rostime()
-    current_time = float(str(ros_current_time.secs) + '.' + str(ros_current_time.nsecs))
-    latency = current_time - sent_time
-    
-    packet = {'seq':data.header.seq,'latency':latency}
+    secs = data.header.stamp.secs
+    nsecs = data.header.stamp.nsecs
 
+    sent_time = rospy.Time(secs,nsecs)
+    current_time = rospy.get_rostime()
+    latency = (current_time - sent_time).to_sec()
+    print (latency)
+    packet = {'seq':data.header.seq,'latency':latency}
     packets.append(packet)
 
     # output_logf = open(path, 'a')
@@ -57,7 +58,7 @@ def listener():
     count = 0
 
     for packet in packets:
-        count2+=1
+        count+=1
         total_latency += packet['latency']
 
     average_latency = total_latency/sent_packet_count
