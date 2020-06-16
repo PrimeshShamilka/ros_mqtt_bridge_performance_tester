@@ -12,7 +12,7 @@ Structure of the custom message is given below.
 Header header\
 string name\
 bool flag\
-int8 age\
+int8 age
 
 Analysis was carried out for 3 different setups. 
 
