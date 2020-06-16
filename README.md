@@ -14,6 +14,15 @@ string name
 bool flag
 int8 age
 
-Analysis was carried out for 3 different setups. Results for each setup are shown in the tables below.
+Analysis was carried out for 3 different setups. 
 
+![](https://github.com/PrimeshShamilka/ros_mqtt_bridge_performance_tester/blob/master/images/setup1.png)
+
+![](https://github.com/PrimeshShamilka/ros_mqtt_bridge_performance_tester/blob/master/images/setup2.png)
+
+![](https://github.com/PrimeshShamilka/ros_mqtt_bridge_performance_tester/blob/master/images/setup3.png)
+
+Results from setup 1
+
+![](https://github.com/PrimeshShamilka/ros_mqtt_bridge_performance_tester/blob/master/images/results1.png)
 
