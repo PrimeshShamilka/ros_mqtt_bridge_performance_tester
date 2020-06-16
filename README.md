@@ -9,10 +9,10 @@ Pointcloud2 message and a custom message was used for the network analysis of gr
 
 Structure of the custom message is given below. 
 
-Header header
-string name
-bool flag
-int8 age
+Header header\
+string name\
+bool flag\
+int8 age\
 
 Analysis was carried out for 3 different setups. 
 
