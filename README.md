@@ -5,7 +5,7 @@ A tool for Network performance analysis and stress testing of ROS mqtt bridge an
 
 ## Demo 
 
-Pointcloud2 message and a custom message was used for the network analysis. For each message type network latency and packet loss were calculated at 10, 100, 1000, 10000, 100000 Hz frequencies. Each latency and packet loss value is an average of 5 values. 
+Pointcloud2 message and a custom message was used for the network analysis of groove-x/mqtt_bridge and Rosbridge WebSocket. For each message type network latency and packet loss were calculated at 10, 100, 1000, 10000, 100000 Hz frequencies. Each latency and packet loss value is an average of 5 values. 
 
 Structure of the custom message is given below. 
 
