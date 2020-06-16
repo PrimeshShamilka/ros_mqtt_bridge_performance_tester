@@ -21,7 +21,7 @@ def talker():
         data.append(i)
 
     counter = 1
-    while not rospy.is_shutdown():
+    while not rospy.is_shutdown():  
         str_to_publish = "Message %d"% (counter)
 
         point_field.name = str_to_publish

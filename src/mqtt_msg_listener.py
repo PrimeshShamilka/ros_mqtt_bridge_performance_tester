@@ -26,6 +26,7 @@ def on_message(client, userdata, msg):
         secs = message['header']['stamp']['secs']
         nsecs = message['header']['stamp']['nsecs']
         seq = message['header']['seq']
+        age = message['age']
 
         # sent_time = float(str(secs) + '.' + str(nsecs))
         sent_time = rospy.Time(secs,nsecs)
@@ -36,7 +37,13 @@ def on_message(client, userdata, msg):
         # print (rospy.get_rostime())
         latency = (current_time - sent_time).to_sec()
 
+        print ("-------------------------------")
+        if(latency<0):
+            print ("nnnnnnnnnnnnnnnnnnnnnnn")
+        print (seq)
+        print (age)
         print(latency)
+        print (sent_time, current_time)
         # print ((rospy.get_rostime()-rospy.Time(secs,nsecs)).to_sec())
         packet = {'seq':seq,'latency':latency}
         packets.append(packet)
@@ -54,7 +61,7 @@ client.connect("192.168.1.2", 1883, 60)
 client.loop_start()
 
 count1 = 0
-while count1 < 300000000:
+while count1 < 50000000:
     count1+=1
 
 client.loop_stop()
